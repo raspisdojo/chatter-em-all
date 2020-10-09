@@ -1,4 +1,6 @@
-# Salesforce App
+# Push'em all!
+
+Simple LWC application to send massive push notification to Salesforce Users.
 
 This guide helps Salesforce developers who are new to Visual Studio Code go from zero to a deployed app using Salesforce Extensions for VS Code and Salesforce CLI.
 

@@ -1,0 +1,11 @@
+{
+  "packageDirectories": [
+    {
+      "path": "push-em-all-app",
+      "default": true
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "49.0"
+}
