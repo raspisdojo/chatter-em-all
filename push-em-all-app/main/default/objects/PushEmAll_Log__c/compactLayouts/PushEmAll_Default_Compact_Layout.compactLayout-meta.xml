@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PushEmAll_Default_Compact_Layout</fullName>
+    <fields>Notification_Title__c</fields>
+    <fields>Notification_Body__c</fields>
+    <fields>Target_Record_Id__c</fields>
+    <fields>Name</fields>
+    <label>PushEmAll Default Compact Layout</label>
+</CompactLayout>
