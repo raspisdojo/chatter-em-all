@@ -13,6 +13,7 @@
     <label>Push&apos;em all!</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>PushEmAll_Log__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Push_em_all_UtilityBar</utilityBar>
 </CustomApplication>

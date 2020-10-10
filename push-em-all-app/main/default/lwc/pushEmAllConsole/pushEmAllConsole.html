@@ -1,1 +1,24 @@
-<template> </template>
+<template>
+    <lightning-layout horizontal-align="center" multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="12">
+            <c-lookup
+                sobject-api-name="User"
+                title-api-name="Name"
+                subtitle-api-name="UserName"
+                icon-name="standard:user"
+                label="User"
+                onselect={lookupChange}
+            ></c-lookup>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <lightning-button
+                variant="brand"
+                label="Create Notification"
+                title="Create Notification"
+                icon-name="utility:alert"
+                class="slds-m-left_x-small"
+                onclick={createNotification}
+            ></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
