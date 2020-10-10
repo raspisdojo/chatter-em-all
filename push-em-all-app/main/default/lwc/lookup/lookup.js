@@ -18,7 +18,6 @@ export default class Lookup extends LightningElement {
     _container;
 
     renderedCallback() {
-        console.log(this.sobjectApiName);
         this._container = this.template.querySelector("[data-id=combobox]");
         this.placeholder = "Search " + this.sobjectApiName + "...";
     }
@@ -26,15 +25,14 @@ export default class Lookup extends LightningElement {
     handleOnClick(e) {
         this.selectedObj = this.sobjects[parseInt(e.currentTarget.dataset.index)];
         this.selected = true;
-        this.dispatchEvent(new CustomEvent("change"));
+        this.dispatchEvent(new CustomEvent("select", { detail: this.selectedObj }));
         //this.template.querySelector('[data-id=comboboxContainer]').classList.add("slds-has-selection");
     }
 
     removeSelected() {
-        console.log("removeSelected");
         this.selectedObj = null;
         this.selected = false;
-        this.dispatchEvent(new CustomEvent("change"));
+        this.dispatchEvent(new CustomEvent("select"), { detail: null });
     }
 
     search(e) {
@@ -56,7 +54,6 @@ export default class Lookup extends LightningElement {
             this.sobjects = [];
         }
         this.displayList();
-        //this.addOnClickEvent();
     }
 
     displayList() {
@@ -64,10 +61,4 @@ export default class Lookup extends LightningElement {
         if (this.isOpen) this._container.classList.add("slds-is-open");
         else this._container.classList.remove("slds-is-open");
     }
-
-    /*addOnClickEvent() {
-        for (let listItem of this.template.querySelectorAll("li.myListItem")){
-            listItem.addEventListener("click", this.handleOnClick(this.sobjects[parseInt(listItem.dataset.id)]));
-        }
-    }*/
 }
