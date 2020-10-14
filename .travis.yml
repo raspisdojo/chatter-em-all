@@ -29,4 +29,4 @@ jobs:
           script:
               - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key
                 --username $USERNAME --setdefaultdevhubusername -a HubOrg
-              - npm run sfdx:deploy:validation
+              - sfdx force:source:deploy -p push-em-all-app/ -l RunLocalTests -c -u HubOrg
