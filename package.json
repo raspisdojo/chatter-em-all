@@ -14,7 +14,13 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
         "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-        "sfdx:create:scratchorg": "sfdx force:org:create -a push-em-all-scratch -s -f config/project-scratch-def.json -d 3"
+        "build": "npm run sfdx:setup:project",
+        "sfdx:setup:project": "npm run sfdx:create:scratchorg && npm run sfdx:source:push && npm run sfdx:permset:assign",
+        "sfdx:create:scratchorg": "sfdx force:org:create -a push-em-all-scratch -s -f config/project-scratch-def.json -d 3",
+        "sfdx:delete:scratchorg": "sfdx force:org:delete --targetusername sf-platform-cache-demo --noprompt",
+        "sfdx:source:push": "sfdx force:source:push",
+        "sfdx:permset:assign": "sfdx force:user:permset:assign -n PushEmAll",
+        "sfdx:deploy:validation": "sfdx force:source:deploy -p push-em-all-app/ -l RunLocalTests -c"
     },
     "devDependencies": {
         "@prettier/plugin-xml": "^0.10.0",
