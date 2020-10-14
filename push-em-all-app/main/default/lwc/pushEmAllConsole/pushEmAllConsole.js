@@ -8,6 +8,7 @@ export default class PushEmAllConsole extends LightningElement {
     }
 
     lookupChange(e) {
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.record = e.detail;
         console.log(JSON.stringify(this.record, null, 4));
     }

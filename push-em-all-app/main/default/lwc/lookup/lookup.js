@@ -1,4 +1,5 @@
-import { LightningElement, api, wire, track } from "lwc";
+/* eslint-disable radix */
+import { LightningElement, api } from "lwc";
 import findSObjects from "@salesforce/apex/LookupController.findSObjects";
 
 export default class Lookup extends LightningElement {
@@ -23,6 +24,7 @@ export default class Lookup extends LightningElement {
     }
 
     handleOnClick(e) {
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.selectedObj = this.sobjects[parseInt(e.currentTarget.dataset.index)];
         this.selected = true;
         this.dispatchEvent(new CustomEvent("select", { detail: this.selectedObj }));
@@ -30,6 +32,7 @@ export default class Lookup extends LightningElement {
     }
 
     removeSelected() {
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.selectedObj = null;
         this.selected = false;
         this.dispatchEvent(new CustomEvent("select"), { detail: null });
@@ -37,7 +40,7 @@ export default class Lookup extends LightningElement {
 
     search(e) {
         this.searchKey = e.target.value;
-        if (this.searchKey != null && this.searchKey != "") {
+        if (this.searchKey != null && this.searchKey !== "") {
             findSObjects({
                 searchKey: this.searchKey,
                 sobjectApiName: this.sobjectApiName,
@@ -57,7 +60,7 @@ export default class Lookup extends LightningElement {
     }
 
     displayList() {
-        this.isOpen = this.searchKey != null && this.searchKey != "";
+        this.isOpen = this.searchKey != null && this.searchKey !== "";
         if (this.isOpen) this._container.classList.add("slds-is-open");
         else this._container.classList.remove("slds-is-open");
     }
