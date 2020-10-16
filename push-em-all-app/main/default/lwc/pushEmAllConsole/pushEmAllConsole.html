@@ -1,14 +1,36 @@
 <template>
+    <lightning-spinner if:true={isLoading} variant="brand" size="medium" title="Loading"></lightning-spinner>
     <lightning-layout horizontal-align="center" multiple-rows="true">
+        <lightning-layout-item padding="around-small" size="12"> </lightning-layout-item>
         <lightning-layout-item padding="around-small" size="12">
-            <c-lookup
-                sobject-api-name="User"
-                title-api-name="Name"
-                subtitle-api-name="UserName"
-                icon-name="standard:user"
-                label="User"
-                onselect={lookupChange}
-            ></c-lookup>
+            <div class="slds-box--border slds-p-around_small">
+                <lightning-layout>
+                    <lightning-layout-item>
+                        <c-custom-object-picker
+                            menu-items={menuItems}
+                            default-value={defaultValue}
+                            onselect={selectPicker}
+                        ></c-custom-object-picker>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="grow">
+                        <c-lookup
+                            sobject-api-name="User"
+                            title-api-name="Name"
+                            subtitle-api-name="UserName"
+                            icon-name="standard:user"
+                            label="User"
+                            label-hidden="true"
+                            onselect={lookupChange}
+                        ></c-lookup>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12">
+            <lightning-input required type="text" name="title" label="Title"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="12">
+            <lightning-textarea required name="body" label="Body"></lightning-textarea>
         </lightning-layout-item>
         <lightning-layout-item padding="around-small">
             <lightning-button

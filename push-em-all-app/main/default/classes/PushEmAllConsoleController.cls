@@ -15,13 +15,13 @@ public with sharing class PushEmAllConsoleController {
 
     public class PushEmAllNotification {
         @AuraEnabled
-        public String body;
+        public String body { get; set; }
 
         @AuraEnabled
-        public String title;
+        public String title { get; set; }
 
         @AuraEnabled
-        public List<Id> recipientIds;
+        public List<Id> recipientIds { get; set; }
     }
 
     private static PushEmAll_Log__c createPushEmAllLogRecord(PushEmAllnotification notificationInfo) {
