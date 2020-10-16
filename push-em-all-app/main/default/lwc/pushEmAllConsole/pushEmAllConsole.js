@@ -1,11 +1,15 @@
 import { LightningElement } from "lwc";
 import sendPushNotification from "@salesforce/apex/PushEmAllConsoleController.sendPushNotification";
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class PushEmAllConsole extends LightningElement {
+    isLoading = false;
+
     recipientIds = new Array();
     _error;
 
     createNotification() {
+        this.isLoading = true;
         let title = this.template.querySelector("lightning-input").value;
         let body = this.template.querySelector("lightning-textarea").value;
         console.log("Create notification to: " + this.recipientIds[0]);
@@ -19,11 +23,15 @@ export default class PushEmAllConsole extends LightningElement {
             }
         })
             .then((result) => {
+                this.isLoading = false;
                 console.log(result);
+                this.dispatchToastEvent("Success!", "Notification has been sent", "success");
             })
             .catch((error) => {
+                this.isLoading = false;
                 this._error = error;
                 console.log(error);
+                this.dispatchToastEvent("Error", error, "error");
             });
     }
 
@@ -33,4 +41,14 @@ export default class PushEmAllConsole extends LightningElement {
         console.log(JSON.stringify(record, null, 4));
         if (record != null) this.recipientIds[0] = record.id;
     }
+
+    dispatchToastEvent = (t, m, v) => {
+        const evt = new ShowToastEvent({
+            title: t,
+            message: m,
+            variant: v,
+            mode: "sticky"
+        });
+        this.dispatchEvent(evt);
+    };
 }
