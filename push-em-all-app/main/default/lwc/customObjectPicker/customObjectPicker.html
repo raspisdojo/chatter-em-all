@@ -8,10 +8,10 @@
             <ul class="slds-dropdown__list" role="menu">
                 <template for:each={menuItems} for:item="i">
                     <li key={i.objectName} class="slds-dropdown__item" role="presentation">
-                        <c-custom-lookup-object-picker-element
+                        <c-custom-object-picker-element
                             value={i}
                             onselected={handleMenuSelect}
-                        ></c-custom-lookup-object-picker-element>
+                        ></c-custom-object-picker-element>
                     </li>
                 </template>
             </ul>
