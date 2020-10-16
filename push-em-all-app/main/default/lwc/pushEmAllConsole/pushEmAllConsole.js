@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement } from "lwc";
 import sendPushNotification from "@salesforce/apex/PushEmAllConsoleController.sendPushNotification";
 
 export default class PushEmAllConsole extends LightningElement {
