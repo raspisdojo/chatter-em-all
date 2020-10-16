@@ -33,4 +33,21 @@ export default class PushEmAllConsole extends LightningElement {
         console.log(JSON.stringify(record, null, 4));
         if (record != null) this.recipientIds[0] = record.id;
     }
+
+    selectPicker(e) {
+        let object = e.detail.details;
+        console.log(object);
+        console.log(e.detail.objectName);
+    }
+
+    get menuItems() {
+        return [
+            { objectName: "User", iconName: "standard:user", label: "User" },
+            { objectName: "Group", iconName: "standard:groups", label: "Group" }
+        ];
+    }
+
+    get defaultValue() {
+        return this.menuItems[0];
+    }
 }
