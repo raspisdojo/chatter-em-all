@@ -1,4 +1,5 @@
 <template>
+    <lightning-spinner if:true={isLoading} variant="brand" size="medium" title="Loading"></lightning-spinner>
     <lightning-layout horizontal-align="center" multiple-rows="true">
         <lightning-layout-item padding="around-small" size="12"> </lightning-layout-item>
         <lightning-layout-item padding="around-small" size="12">
@@ -26,10 +27,10 @@
             </div>
         </lightning-layout-item>
         <lightning-layout-item padding="around-small" size="12">
-            <lightning-input type="text" name="title" label="Title"></lightning-input>
+            <lightning-input required type="text" name="title" label="Title"></lightning-input>
         </lightning-layout-item>
         <lightning-layout-item padding="around-small" size="12">
-            <lightning-textarea name="body" label="Body"></lightning-textarea>
+            <lightning-textarea required name="body" label="Body"></lightning-textarea>
         </lightning-layout-item>
         <lightning-layout-item padding="around-small">
             <lightning-button
