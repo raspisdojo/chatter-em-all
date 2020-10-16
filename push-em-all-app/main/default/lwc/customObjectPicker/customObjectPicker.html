@@ -1,0 +1,20 @@
+<template>
+    <div class={buttonClass}>
+        <button class="slds-button slds-button_icon slds-button_icon-border-filled button-size" onclick={switchButton}>
+            <lightning-icon icon-name={selectedMenuIcon} size="small" class="slds-m-left_xxx-small"></lightning-icon
+            ><lightning-icon icon-name="utility:down" size="xx-small"></lightning-icon>
+        </button>
+        <div class="slds-dropdown slds-dropdown_left slds-dropdown_x-small">
+            <ul class="slds-dropdown__list" role="menu">
+                <template for:each={menuItems} for:item="i">
+                    <li key={i.objectName} class="slds-dropdown__item" role="presentation">
+                        <c-custom-lookup-object-picker-element
+                            value={i}
+                            onselected={handleMenuSelect}
+                        ></c-custom-lookup-object-picker-element>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+</template>
